@@ -1,0 +1,15 @@
+# Example with Path Parameters
+# URL:  GET https://api.example.com/photo/album/123456
+
+
+# Photo Album
+/album/{id}:
+  # GET an album
+  get:
+    # Query parameters
+    parameters:
+      # Album id
+      - name: id
+        in: path
+        required: true
+        type: integer
