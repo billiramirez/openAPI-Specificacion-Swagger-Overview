@@ -1,0 +1,19 @@
+# Endpoints
+paths: 
+  # Photo Album
+  /album:
+    # Get one or more albums
+    get:
+      # Query Parameters
+      parameters:
+          # starting date
+        - name: start
+          in: query
+          required: false
+          type: string
+
+          # ending date
+        - name: end
+          in: query
+          required: false
+          type: string
