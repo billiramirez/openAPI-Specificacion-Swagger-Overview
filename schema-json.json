@@ -1,0 +1,139 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.3.0",
+    "title": "Music Api"
+  },
+  "host": "api.muzicplayz.com",
+  "basePath": "/v3",
+  "schemes": ["https"],
+  "paths": {
+    "/playlist": {
+      "get": {
+        "parameters": [
+          {
+            "name": "lmit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "Number of playlist to return"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "Index of the first playlist to return"
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Return playlist whose name contains this string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "newPlaylist",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newPlaylist"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/playlist/{playlist-id}": {
+      "delete": {
+        "parameters": [
+          {
+            "name": "playlist-id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "playlist-id",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/playlistWithSongs"
+            }
+          }
+        ],
+        "responses": {
+          "200":{
+            "description":"Successful response"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "newPlaylist": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "songIds": {
+          "type": "array"
+        },
+        "items": {
+          "type": "integer"
+        }
+      }
+    },
+    "playlistWithSongs":{
+      "properties": {
+        "id":{
+          "type": "integer",
+          "description": "id of the playlist"
+        },
+        "name": {
+          "type": "string",
+          "description": "name of the playlist"
+        },
+        "songs": {
+          "type": "array",
+          "$ref": "#/definitions/song"
+        }
+      }
+    },
+    "song": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
