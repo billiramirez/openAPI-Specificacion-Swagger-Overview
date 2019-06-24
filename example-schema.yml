@@ -1,0 +1,7 @@
+definitions:
+  newAlbum:
+    properties:
+      name:
+        type: string
+      date:
+        type: string
